@@ -1,11 +1,11 @@
 #pragma config(Hubs,  S1, HTMotor,  HTMotor,  HTServo,  HTMotor)
 #pragma config(Sensor, S1,     IRSeeker,       sensorI2CMuxController)
-#pragma config(Motor,  mtr_S1_C1_1,     motorBL,       tmotorTetrix, openLoop)
-#pragma config(Motor,  mtr_S1_C1_2,     motorBR,       tmotorTetrix, openLoop, reversed)
-#pragma config(Motor,  mtr_S1_C2_1,     motorTL,       tmotorTetrix, openLoop)
-#pragma config(Motor,  mtr_S1_C2_2,     motorTR,       tmotorTetrix, openLoop, reversed)
-#pragma config(Motor,  mtr_S1_C4_1,     motorBrush,    tmotorTetrix, openLoop)
-#pragma config(Motor,  mtr_S1_C4_2,     motorI,        tmotorTetrix, openLoop)
+#pragma config(Motor,  mtr_S1_C1_1,     motorBL,       tmotorTetrix, openLoop, reversed)
+#pragma config(Motor,  mtr_S1_C1_2,     motorBR,       tmotorTetrix, openLoop)
+#pragma config(Motor,  mtr_S1_C2_1,     motorTL,       tmotorTetrix, openLoop, reversed)
+#pragma config(Motor,  mtr_S1_C2_2,     motorTR,       tmotorTetrix, openLoop)
+#pragma config(Motor,  mtr_S1_C4_1,     motor,         tmotorTetrix, openLoop)
+#pragma config(Motor,  mtr_S1_C4_2,     motorBrush,    tmotorTetrix, openLoop)
 #pragma config(Servo,  srvo_S1_C3_1,    servoGrip1,           tServoStandard)
 #pragma config(Servo,  srvo_S1_C3_2,    servoGrip2,           tServoStandard)
 #pragma config(Servo,  srvo_S1_C3_3,    servo3,               tServoNone)
@@ -79,6 +79,11 @@ task brush()
 			motor[motorBrush] = joystick.joy2_y1;
 		}
 
+		else
+		{
+			motor[motorBrush] = 0;
+		}
+
 		//wait for latency
 		wait1Msec(5);
 
@@ -137,6 +142,7 @@ task main()
   initializeRobot();
 
   waitForStart();   // wait for start of tele-op phase
+  StartTask(brush);
 
   while (true)
   {
