@@ -150,18 +150,6 @@ task main()
 	   }
 	}
 
-//encoder coding
-	//nMotorEncoder[motorB] = 0;
-	//nMotorEncoder[motorC] = 0;
-
-	//nMotorEncoderTarget[motorB] = 1800;
-	//nMotorEncoderTarget[motorC] = 1800;
-
-	//motor[motorB] = 50;
-	//motor[motorC] = 50;
-
- // wait1Msec(8000);
-
     // Insert code to have servos and motors respond to joystick and button values.
 
     // Look in the ROBOTC samples folder for programs that may be similar to what you want to perform.
