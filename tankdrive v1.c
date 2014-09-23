@@ -45,20 +45,25 @@ task baseGrip()
 {
 	while(true)
 	{
-		servo[servoGrip1] = 0;
+		//sets the servos to start position
+		servo[servoGrip1] = 0; //CHANGE LATER
 		servo[servoGrip2] = 180;
 
+		//if (button) button pressed, servos go to grip
 		if(joy1Btn(4) == 1)
 		{
-			servo[servoGrip1] = 100; //change this later
+			servo[servoGrip1] = 100; //CHANGE LATER
 			servo[servoGrip2] = 100;
 		}
 
+		//if (button) button pressed, servos go to release
 		if(joy1Btn(3) == 1)
 		{
-			servo[servoGrip1] = 90; //change this later
+			servo[servoGrip1] = 90; //CHANGE LATER
 			servo[servoGrip2] = 90;
 		}
+
+		//wait for latency
 		wait1Msec(5);
 
 	}
@@ -68,11 +73,15 @@ task brush()
 {
 	while(true)
 	{
+
 		if(abs(joystick.joy2_y1) > 10)
 		{
 			motor[motorBrush] = joystick.joy2_y1;
 		}
+
+		//wait for latency
 		wait1Msec(5);
+
 	}
 }
 
@@ -149,11 +158,5 @@ task main()
 	    motor[motorBR] = 0;
 	   }
 	}
-
-    // Insert code to have servos and motors respond to joystick and button values.
-
-    // Look in the ROBOTC samples folder for programs that may be similar to what you want to perform.
-    // You may be able to find "snippets" of code that are similar to the functions that you want to
-    // perform.
 
 }
