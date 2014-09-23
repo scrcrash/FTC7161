@@ -155,3 +155,18 @@ void driveDistance(int inches)
 	motor[motorBR] = 0;
 	motor[motorBL] = 0;
 }
+
+void turn(int degrees)
+{
+	nMotorEncoder[motorTR] = 0;
+	nMotorEncoder[motorTL] = 0;
+
+	int tickGoal; //FIGURE OUT DEGREES TO TICKS
+
+	while(nMotorEncoder[motorTR] < tickGoal)
+	{
+		motor[motorTR] = 20;
+		motor[motorTL] = 20;
+
+	while(nMotorEncode
+}
