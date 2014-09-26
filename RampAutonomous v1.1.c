@@ -163,10 +163,11 @@ void turn(int degrees)
 
 	int tickGoal; //FIGURE OUT DEGREES TO TICKS
 
-	while(nMotorEncoder[motorTR] < tickGoal)
+ 	while(nMotorEncoder[motorTR] < tickGoal) //turn right
 	{
 		motor[motorTR] = 20;
-		motor[motorTL] = 20;
-
-	while(nMotorEncode
+		motor[motorBR] = 20;
+		motor[motorTL] = -20;
+		motor[motorBL] = -20;
+	}
 }
