@@ -4,7 +4,7 @@
 #pragma config(Motor,  mtr_S1_C1_2,     motorBR,       tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C2_1,     motorTL,       tmotorTetrix, openLoop, reversed)
 #pragma config(Motor,  mtr_S1_C2_2,     motorTR,       tmotorTetrix, openLoop)
-#pragma config(Motor,  mtr_S1_C4_1,     motor,         tmotorTetrix, openLoop)
+#pragma config(Motor,  mtr_S1_C4_1,     motorNone,     tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C4_2,     motorBrush,    tmotorTetrix, openLoop)
 #pragma config(Servo,  srvo_S1_C3_1,    servoGrip1,           tServoStandard)
 #pragma config(Servo,  srvo_S1_C3_2,    servoGrip2,           tServoStandard)
@@ -26,20 +26,6 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "JoystickDriver.c"  //Include file to "handle" the Bluetooth messages.
-
-//task IR ()
-//{
-//	while(true)
-//	{
-//		if (SensorValue[IRSeeker] == 5)
-//		{
-//			motor[motorTL] = 0;
-//			motor[motorTR] = 0;
-//			motor[motorBL] = 0;
-//			motor[motorBR] = 0;
-//		}
-//	}
-//}
 
 task baseGrip()
 {
@@ -142,7 +128,7 @@ task main()
   initializeRobot();
 
   waitForStart();   // wait for start of tele-op phase
-  StartTask(brush);
+  startTask(brush);
 
   while (true)
   {
