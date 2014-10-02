@@ -41,8 +41,6 @@
 //	}
 //}
 
-task
-
 task baseGrip()
 {
 	while(true)
@@ -66,7 +64,7 @@ task baseGrip()
 	}
 }
 
-task brush()
+task brush()	//is this the manipulator method?
 {
 	while(true)
 	{
@@ -75,6 +73,23 @@ task brush()
 			motor[motorBrush] = joystick.joy2_y1;
 		}
 		wait1Msec(5);
+	}
+}
+
+task conveyor()	//method for conveyor belt manipulator
+{
+	while(true)
+	{
+		 //conveyor belt runs forward when button pressed
+		if (joy2Btn(5) == 1)
+		{
+			//which motor is the motor for the conveyor belt?
+			motor[motorC] = 50; //what speed do we want?
+		}
+		if (joy2Btn(4) == 1)
+		{
+			motor[motorC] = -50;
+		}
 	}
 }
 
