@@ -19,7 +19,7 @@ void driveDistance(int inches)
 }
 
 int tickGoal = 1146;
-int tickTest = nMotorEncoder[motorTL];
+int tickTest = nMotorEncoder[motorBR];
 
 task main()
 {
@@ -30,11 +30,19 @@ task main()
 	nMotorEncoder[motorBL] = 0;
 
 	//move forward until encoder reading is more than the goal
-	while(nMotorEncoder[motorTL] < tickGoal)
+	while(tickTest < tickGoal)
 	{
 		motor[motorTL] = 30;
 		motor[motorTR] = 30;
 		motor[motorBL] = 30;
 		motor[motorBR] = 30;
+		tickTest = nMotorEncoder[motorBR];
 	}
+	//else
+	//{
+	//	motor[motorTL] = 0;
+	//	motor[motorTR] = 0;
+	//	motor[motorBL] = 0;
+	//	motor[motorBR] = 0;
+	//}
 }
