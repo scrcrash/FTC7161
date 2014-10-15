@@ -76,7 +76,17 @@ void initializeRobot()
 task main()
 {
   initializeRobot();
+	//move grip down with hinge servos
+ 	servo[servoHingeR] = 180;
+  servo[servoHingeL] = 0;
 
+  wait1Msec(3000);
+
+  //move grippers to open position
+  servo[servoGripR] = 180;
+  servo[servoGripL] = 0;
+
+  wait1Msec(3000);
   waitForStart(); // Wait for the beginning of autonomous phase.
 
   //Ramp
@@ -99,9 +109,9 @@ task main()
 
   wait1Msec(5000);
 
-  //use grip to grab goals
-  servo[servoGrip1] = 180;
-  servo[servoGrip2] = 0;
+  //move grippers to open position
+  servo[servoGripR] = 180;
+  servo[servoGripL] = 0;
 
   wait1Msec(3000);
 
