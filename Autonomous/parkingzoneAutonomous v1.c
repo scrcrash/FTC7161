@@ -159,6 +159,4 @@ task main()
 
   	//use encoder value to determine how far back robot should go
 
-  while (true)
-  {}
 }

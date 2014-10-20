@@ -2,7 +2,7 @@
 #pragma config(Sensor, S1,     IRSeeker,       sensorI2CMuxController)
 #pragma config(Motor,  mtr_S1_C1_1,     motorTL,       tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C1_2,     motorBL,       tmotorTetrix, openLoop, reversed)
-#pragma config(Motor,  mtr_S1_C2_1,     motorTR,       tmotorTetrix, openLoop)
+#pragma config(Motor,  mtr_S1_C2_1,     motorTR,       tmotorTetrix, openLoop, reversed)
 #pragma config(Motor,  mtr_S1_C2_2,     motorBR,       tmotorTetrix, openLoop, reversed)
 #pragma config(Motor,  mtr_S1_C3_1,     motorBrush,    tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C3_2,     motorConveyor, tmotorTetrix, openLoop)
@@ -46,36 +46,36 @@ task baseGrip()
 	while(true)
 	{
 		//reset servos
-		servo[servoHinge1] = 90;
-		servo[servoHinge2] = 90;
+		servo[servoHingeR] = 90;
+		servo[servoHingeL] = 90;
 
-		servo[servoGrip1] = 0;
-		servo[servoGrip2] = 180;
+		servo[servoGripR] = 0;
+		servo[servoGripL] = 180;
 
 		//move grips to down position
 		if(joy1Btn(3) == 1)
 		{
-			servo[servoHinge1] = 120;
-			servo[servoHinge2] = 60;
+			servo[servoHingeR] = 120;
+			servo[servoHingeL] = 60;
 		}
 
 		//move grips to upright position
 		if(joy1Btn(5) == 1)
 		{
-			servo[servoHinge1] = 100;
-			servo[servoHinge2] = 80;
+			servo[servoHingeR] = 100;
+			servo[servoHingeL] = 80;
 		}
 
 		if(joy1Btn(4) == 1)
 		{
-			servo[servoGrip1] = 100; //change this later
-			servo[servoGrip2] = 100;
+			servo[servoGripR] = 100; //change this later
+			servo[servoGripL] = 100;
 		}
 
 		if(joy1Btn(3) == 1)
 		{
-			servo[servoGrip1] = 90; //change this later
-			servo[servoGrip2] = 90;
+			servo[servoGripR] = 90; //change this later
+			servo[servoGripL] = 90;
 		}
 		wait1Msec(5);
 
