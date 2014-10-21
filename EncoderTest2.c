@@ -17,8 +17,8 @@
 void driveDistance(int inches)
 {
 }
-
-int tickGoal = 2300;
+//67 ticks per inch
+int tickGoal = 1146;
 int tickTest = nMotorEncoder[motorBR];
 
 task main()
