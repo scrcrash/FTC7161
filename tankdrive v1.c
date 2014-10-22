@@ -92,6 +92,14 @@ task brush()
 		{
 			motor[motorBrush] = 0;
 		}
+		if(joy1Btn(5) == true)
+		{
+			servo[servoHingeL] = 90;
+		}
+		else if(joy1Btn(6) == true)
+		{
+			servo[servoHingeL] = 0;
+	}
 
 		//wait for latency
 		wait1Msec(5);
