@@ -46,39 +46,36 @@ task baseGrip()
 	while(true)
 	{
 		//reset servos
-		//servo[servoHingeR] = 90;
-		//servo[servoHingeL] = 90;
+		servo[servoHingeR] = 90;
+		servo[servoHingeL] = 90;
 
-		//servo[servoGripR] = 180;
-		//servo[servoGripL] = 0;
+		servo[servoGripR] = 0;
+		servo[servoGripL] = 180;
 
 		//move grips to down position
-		//if(joy1Btn(3) == 1)
-		//{
-		//	servo[servoHingeR] = 255;
-		//	servo[servoHingeL] = 0;
-		//}
-
-		////move grips to upright position
-		//if(joy1Btn(5) == 1)
-		//{
-		//	servo[servoHingeR] = 85;
-		//	servo[servoHingeL] = 170;
-		//}
-		if (joy1Btn(3) == 1)
+		if(joy1Btn(3) == 1)
 		{
-			if (servo[servoHingeR] == 255)
-		  {
-		  	servo[servoHingeR] = 85;
-				servo[servoHingeL] = 170;
-				wait1Msec(500);
-			}
-			else
-			{
-				servo[servoHingeR] = 255;
-				servo[servoHingeL] = 0;
-				wait1Msec(500);
-			}
+			servo[servoHingeR] = 120;
+			servo[servoHingeL] = 60;
+		}
+
+		//move grips to upright position
+		if(joy1Btn(5) == 1)
+		{
+			servo[servoHingeR] = 100;
+			servo[servoHingeL] = 80;
+		}
+
+		if(joy1Btn(4) == 1)
+		{
+			servo[servoGripR] = 100; //change this later
+			servo[servoGripL] = 100;
+		}
+
+		if(joy1Btn(3) == 1)
+		{
+			servo[servoGripR] = 90; //change this later
+			servo[servoGripL] = 90;
 		}
 		wait1Msec(5);
 
