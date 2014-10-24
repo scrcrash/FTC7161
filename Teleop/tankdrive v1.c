@@ -46,25 +46,9 @@ task baseGrip()
 	while(true)
 	{
 		//reset servos
-		//servo[servoHingeR] = 90;
-		//servo[servoHingeL] = 90;
-
-		//servo[servoGripR] = 180;
-		//servo[servoGripL] = 0;
-
-		//move grips to down position
-		//if(joy1Btn(3) == 1)
-		//{
-		//	servo[servoHingeR] = 255;
-		//	servo[servoHingeL] = 0;
-		//}
-
-		////move grips to upright position
-		//if(joy1Btn(5) == 1)
-		//{
-		//	servo[servoHingeR] = 85;
-		//	servo[servoHingeL] = 170;
-		//}
+		 servo[servoHingeR] = 85;
+		servo[servoHingeL] = 170;
+		//switches hinges between up and down positions
 		if (joy1Btn(3) == 1)
 		{
 			if (servo[servoHingeR] == 255)
