@@ -32,18 +32,18 @@ task main()
 	  nxtDisplayCenteredTextLine(3, "Sensor Value: %d", SensorValue[IRSensor]);  // display "Sensor Value: ##"
 	  wait1Msec(50);  // Wait 100 milliseconds to help display correctly
 
-	  while(SensorValue[IRSensor] == 0)
-	  {
-		  motor[motorTR] = 10;
-		  motor[motorTL] = 10;
-		  motor[motorBR] = 10;
-		  motor[motorBL] = 10;
-		}
+	//  while(SensorValue[IRSensor] == 0)
+	//  {
+	//	  motor[motorTR] = 10;
+	//	  motor[motorTL] = 10;
+	//	  motor[motorBR] = 10;
+	//	  motor[motorBL] = 10;
+	//	}
 
-		motor[motorTR] = 0;
-		motor[motorTL] = 0;
-		motor[motorBR] = 0;
-		motor[motorBL] = 0;
+	//	motor[motorTR] = 0;
+	//	motor[motorTL] = 0;
+	//	motor[motorBR] = 0;
+	//	motor[motorBL] = 0;
 
 	}
 }

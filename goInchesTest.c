@@ -40,43 +40,47 @@ void goInches(int inch, int speed)
 	}
 }
 
-void goInches(int inch, int speed)
-{
-	int tickGoal = 67 * inch;
+//void goInches(int inch, int speed)
+//{
+//	int tickGoal = 67 * inch;
 
-	nMotorEncoder[motorBR] = 0;  //clear the LEGO motor encoders
-  nMotorEncoder[motorBL] = 0;
-  nMotorEncoder[motorTR] = 0;
-  nMotorEncoder[motorTL] = 0;
+//	nMotorEncoder[motorBR] = 0;  //clear the LEGO motor encoders
+//  nMotorEncoder[motorBL] = 0;
+//  nMotorEncoder[motorTR] = 0;
+//  nMotorEncoder[motorTL] = 0;
 
-  nMotorEncoderTarget[motorBR] = tickGoal; //set the target stoping position
-  nMotorEncoderTarget[motorBL] = tickGoal;
-  nMotorEncoderTarget[motorTR] = tickGoal;
-  nMotorEncoderTarget[motorTL] = tickGoal;
+//  nMotorEncoderTarget[motorBR] = tickGoal; //set the target stoping position
+//  nMotorEncoderTarget[motorBL] = tickGoal;
+//  nMotorEncoderTarget[motorTR] = tickGoal;
+//  nMotorEncoderTarget[motorTL] = tickGoal;
 
-  motor[motorBR] = speed; //turn both motors on at 30 percent power
-  motor[motorBL] = speed;
-  motor[motorTR] = speed;
-  motor[motorTL] = speed;
+//  motor[motorBR] = speed; //turn both motors on at 30 percent power
+//  motor[motorBL] = speed;
+//  motor[motorTR] = speed;
+//  motor[motorTL] = speed;
 
-  while (nMotorRunState[motorBR] != runStateIdle || nMotorRunState[motorBL] != runStateIdle ||
-  			 nMotorRunState[motorTR] != runStateIdle || nMotorRunState[motorTL] != runStateIdle) //while the encoder wheel turns one revolution
-  {
-    // This condition waits for motors B + C to come to an idle position. Both motors stop
-    // and then jumps out of the loop
-  }
+//  while (nMotorRunState[motorBR] != runStateIdle || nMotorRunState[motorBL] != runStateIdle ||
+//  			 nMotorRunState[motorTR] != runStateIdle || nMotorRunState[motorTL] != runStateIdle) //while the encoder wheel turns one revolution
+//  {
+//    // This condition waits for motors B + C to come to an idle position. Both motors stop
+//    // and then jumps out of the loop
+//  }
 
-  motor[motorBR] = 0; //turn all motors off
-  motor[motorBL] = 0;
-  motor[motorTR] = 0;
-  motor[motorTL] = 0;
+//  motor[motorBR] = 0; //turn all motors off
+//  motor[motorBL] = 0;
+//  motor[motorTR] = 0;
+//  motor[motorTL] = 0;
 
-  wait1Msec(100);  // wait 3 seconds to see feedback on the debugger screens
-                    // open the "NXT Devices" window to see the distance the encoder spins.
-                    // the robot will come to a stop at the nMotorEncoderTarget position.
-}
+//  wait1Msec(100);  // wait 3 seconds to see feedback on the debugger screens
+//                    // open the "NXT Devices" window to see the distance the encoder spins.
+//                    // the robot will come to a stop at the nMotorEncoderTarget position.
+//}
 
 task main()
 {
-goInches(17,60);
+	//goInches(35, 60);
+	turnRightDegrees(50);
+	//goInches(17, 60);
+	//turnLeftDegrees(40);
+	//goInches(20, 60); //change value
 }
