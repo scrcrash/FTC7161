@@ -86,29 +86,29 @@ task baseGrip()	//method for grippers
 	while(true)
 	{
 		//reset servos to upright position
-		servo[servoHingeR] = 85;
-		servo[servoHingeL] = 170;
+		servo[servoHingeR] = 120;
+		servo[servoHingeL] = 120;
 		//switches hinges between up and down positions
 		if (joy1Btn(3) == 1)
 		{
 			if (servo[servoHingeR] == 255)
 		  {
 		  	//move to upright position
-		  	servo[servoHingeR] = 85;
-				servo[servoHingeL] = 170;
+		  	servo[servoHingeR] = 120;
+				servo[servoHingeL] = 120;
 				wait1Msec(500);
 			}
 			else
 			{
 				//move to down position
-				servo[servoHingeR] = 255;
+				servo[servoHingeR] = 250;
 				servo[servoHingeL] = 0;
 				wait1Msec(500);
 			}
 		}
 		wait1Msec(5);
 
-	}
+}
 }
 
 //joystick 2 control
