@@ -7,7 +7,7 @@
 #pragma config(Motor,  motorB,           ,             tmotorNXT, openLoop, encoder)
 #pragma config(Motor,  motorC,           ,             tmotorNXT, openLoop, encoder)
 #pragma config(Motor,  mtr_S1_C1_1,     motorTL,       tmotorTetrix, PIDControl, encoder)
-#pragma config(Motor,  mtr_S1_C1_2,     motorBL,       tmotorTetrix, PIDControl, reversed, encoder)
+#pragma config(Motor,  mtr_S1_C1_2,     motorBL,       tmotorTetrix, PIDControl, encoder)
 #pragma config(Motor,  mtr_S1_C2_1,     motorTR,       tmotorTetrix, PIDControl, reversed, encoder)
 #pragma config(Motor,  mtr_S1_C2_2,     motorBR,       tmotorTetrix, PIDControl, reversed, encoder)
 #pragma config(Motor,  mtr_S1_C3_1,     motorBrush,    tmotorTetrix, openLoop)
@@ -55,20 +55,27 @@ task drive()  	//tank drive
 {
 	while (true)
   {
-		if(abs(joystick.joy1_y1) > 25 || abs(joystick.joy1_y2) > 25)
+		if(abs(joystick.joy1_y1) > 25)
 		{
 			motor[motorTL] = joystick.joy1_y1 ;
 			motor[motorBL] = joystick.joy1_y1 ;
-
-			motor[motorTR] = joystick.joy1_y2 ;
-			motor[motorBR] = joystick.joy1_y2 ;
 		}
 
 		else
 		{
 			motor[motorTL] = 0;
-	    motor[motorTR] = 0;
 	    motor[motorBL] = 0;
+	   }
+
+	   if(abs(joystick.joy1_y2) > 25)
+	   {
+	    motor[motorTR] = joystick.joy1_y2 ;
+			motor[motorBR] = joystick.joy1_y2 ;
+		}
+
+			else
+		{
+	    motor[motorTR] = 0;
 	    motor[motorBR] = 0;
 	   }
 	}
@@ -106,55 +113,55 @@ task baseGrip()	//method for grippers
 
 //joystick 2 control
 
-task brushConveyor()	//method for base brush and conveyor complex
-{
-	while(true)
-	{
-		//move brush and conveyor forward or backward with joystick values
-		if(abs(joystick.joy2_y1) > 10)
-		{
-			motor[motorBrush] = joystick.joy2_y1;
-			motor[motorConveyor] = joystick.joy2_y1;
-		}
-		else
-		{
-			motor[motorBrush] = 0;
-			motor[motorConveyor] = 0;
-		}
-		wait1Msec(5);
-	}
-}
+//task brushConveyor()	//method for base brush and conveyor complex
+//{
+//	while(true)
+//	{
+//		//move brush and conveyor forward or backward with joystick values
+//		if(abs(joystick.joy2_y1) > 10)
+//		{
+//			motor[motorBrush] = joystick.joy2_y1;
+//			motor[motorConveyor] = joystick.joy2_y1;
+//		}
+//		else
+//		{
+//			motor[motorBrush] = 0;
+//			motor[motorConveyor] = 0;
+//		}
+//		wait1Msec(5);
+//	}
+//}
 
 
-task pulley() //method for pulley system
-{
-	while(true)
-	{
-		if(abs(joystick.joy2_y2) > 10)
-		{
-			motor[motorPulley] = joystick.joy2_y2;
-		}
-		else
-		{
-			motor[motorPulley] = 0;
-		}
-	}
-}
+//task pulley() //method for pulley system
+//{
+//	while(true)
+//	{
+//		if(abs(joystick.joy2_y2) > 10)
+//		{
+//			motor[motorPulley] = joystick.joy2_y2;
+//		}
+//		else
+//		{
+//			motor[motorPulley] = 0;
+//		}
+//	}
+//}
 
-task basket()
-{
-	while(true)
-	{
-		if(joy2Btn(5) == 1)
-		{
-			servo[servoBasket] = 180;
-		}
-		if(joy2Btn(6) == 1)
-		{
-			servo[servoBasket] = 0;
-		}
-	}
-}
+//task basket()
+//{
+//	while(true)
+//	{
+//		if(joy2Btn(5) == 1)
+//		{
+//			servo[servoBasket] = 180;
+//		}
+//		if(joy2Btn(6) == 1)
+//		{
+//			servo[servoBasket] = 0;
+//		}
+//	}
+//}
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //                                    initializeRobot
@@ -207,11 +214,12 @@ task main()
   initializeRobot();
 
   waitForStart();   // wait for start of tele-op phase
-
+while(true)
+{
   startTask(baseGrip);
-  startTask(brushConveyor);
+ // startTask(brushConveyor);
 	startTask(drive);
-	startTask(pulley);
-	startTask(basket);
-
+//	startTask(pulley);
+//	startTask(basket);
+}
 }
