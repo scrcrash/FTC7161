@@ -35,49 +35,35 @@
 
 #include "JoystickDriver.c"  //Include file to "handle" the Bluetooth messages.
 
-//task IR ()
-//{
-//	while(true)
-//	{
-//		if (SensorValue[IRSeeker] == 5)
-//		{
-//			motor[motorTL] = 0;
-//			motor[motorTR] = 0;
-//			motor[motorBL] = 0;
-//			motor[motorBR] = 0;
-//		}
-//	}
-//}
-
 //joystick 1 control
 
 task drive()  	//tank drive
 {
 	while (true)
   {
-		if(abs(joystick.joy1_y1) > 25)
+		if(abs(joystick.joy1_y1) > 25) //If joystick greater than 25 in either direction
 		{
-			motor[motorTL] = joystick.joy1_y1 ;
+			motor[motorTL] = joystick.joy1_y1 ; //Power the left wheels that amount
 			motor[motorBL] = joystick.joy1_y1 ;
 		}
 
 		else
 		{
 			motor[motorTL] = 0;
-	    motor[motorBL] = 0;
-	   }
+			motor[motorBL] = 0;
+		}
 
-	   if(abs(joystick.joy1_y2) > 25)
-	   {
-	    motor[motorTR] = joystick.joy1_y2 ;
+		if(abs(joystick.joy1_y2) > 25)
+		{
+			motor[motorTR] = joystick.joy1_y2 ;
 			motor[motorBR] = joystick.joy1_y2 ;
 		}
 
-			else
+		else
 		{
-	    motor[motorTR] = 0;
-	    motor[motorBR] = 0;
-	   }
+			motor[motorTR] = 0;
+			motor[motorBR] = 0;
+		}
 	}
 }
 
@@ -89,16 +75,16 @@ task baseGrip()	//method for grippers
 		servo[servoHingeR] = 120;
 		servo[servoHingeL] = 120;
 		//switches hinges between up and down positions
-		if (joy1Btn(3) == 1)
+		if (joy1Btn(3) == 1) //If Button () pushed
 		{
-			if (servo[servoHingeR] == 255)
-		  {
+			if (servo[servoHingeR] == 255) //If the servo is down
+			{
 		  	//move to upright position
-		  	servo[servoHingeR] = 120;
+				servo[servoHingeR] = 120;
 				servo[servoHingeL] = 120;
 				wait1Msec(500);
 			}
-			else
+			else //If the servo is up
 			{
 				//move to down position
 				servo[servoHingeR] = 250;
@@ -106,9 +92,8 @@ task baseGrip()	//method for grippers
 				wait1Msec(500);
 			}
 		}
-		wait1Msec(5);
-
-}
+		wait1Msec(5); //latency
+	}
 }
 
 //joystick 2 control
@@ -162,6 +147,7 @@ task baseGrip()	//method for grippers
 //		}
 //	}
 //}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //                                    initializeRobot
@@ -214,12 +200,12 @@ task main()
   initializeRobot();
 
   waitForStart();   // wait for start of tele-op phase
-while(true)
-{
-  startTask(baseGrip);
+	while(true)
+	{
+  	startTask(baseGrip);
  // startTask(brushConveyor);
-	startTask(drive);
+		startTask(drive);
 //	startTask(pulley);
 //	startTask(basket);
-}
+	}
 }
