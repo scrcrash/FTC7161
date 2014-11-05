@@ -98,55 +98,55 @@ task baseGrip()	//method for grippers
 
 //joystick 2 control
 
-//task brushConveyor()	//method for base brush and conveyor complex
-//{
-//	while(true)
-//	{
-//		//move brush and conveyor forward or backward with joystick values
-//		if(abs(joystick.joy2_y1) > 10)
-//		{
-//			motor[motorBrush] = joystick.joy2_y1;
-//			motor[motorConveyor] = joystick.joy2_y1;
-//		}
-//		else
-//		{
-//			motor[motorBrush] = 0;
-//			motor[motorConveyor] = 0;
-//		}
-//		wait1Msec(5);
-//	}
-//}
+task brushConveyor()	//method for base brush and conveyor complex
+{
+	while(true)
+	{
+		//move brush and conveyor forward or backward with joystick values
+		if(abs(joystick.joy2_y1) > 10)
+		{
+			motor[motorBrush] = joystick.joy2_y1;
+			motor[motorConveyor] = joystick.joy2_y1;
+		}
+		else
+		{
+			motor[motorBrush] = 0;
+			motor[motorConveyor] = 0;
+		}
+		wait1Msec(5);
+	}
+}
 
 
-//task pulley() //method for pulley system
-//{
-//	while(true)
-//	{
-//		if(abs(joystick.joy2_y2) > 10)
-//		{
-//			motor[motorPulley] = joystick.joy2_y2;
-//		}
-//		else
-//		{
-//			motor[motorPulley] = 0;
-//		}
-//	}
-//}
+task pulley() //method for pulley system
+{
+	while(true)
+	{
+		if(abs(joystick.joy2_y2) > 10)
+		{
+			motor[motorPulley] = joystick.joy2_y2;
+		}
+		else
+		{
+			motor[motorPulley] = 0;
+		}
+	}
+}
 
-//task basket()
-//{
-//	while(true)
-//	{
-//		if(joy2Btn(5) == 1)
-//		{
-//			servo[servoBasket] = 180;
-//		}
-//		if(joy2Btn(6) == 1)
-//		{
-//			servo[servoBasket] = 0;
-//		}
-//	}
-//}
+task basket()
+{
+	while(true)
+	{
+		if(joy2Btn(5) == 1)
+		{
+			servo[servoBasket] = 180;
+		}
+		if(joy2Btn(6) == 1)
+		{
+			servo[servoBasket] = 0;
+		}
+	}
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -203,9 +203,9 @@ task main()
 	while(true)
 	{
   	startTask(baseGrip);
- // startTask(brushConveyor);
+ 		startTask(brushConveyor);
 		startTask(drive);
-//	startTask(pulley);
-//	startTask(basket);
+		startTask(pulley);
+		startTask(basket);
 	}
 }
