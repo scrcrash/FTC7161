@@ -12,7 +12,7 @@
 #pragma config(Motor,  mtr_S1_C1_2,     motorBR,       tmotorTetrix, openLoop, reversed, driveLeft)
 #pragma config(Motor,  mtr_S1_C2_1,     motorTR,       tmotorTetrix, PIDControl, reversed, driveRight, encoder)
 #pragma config(Motor,  mtr_S1_C2_2,     motorTL,       tmotorTetrix, PIDControl, driveLeft, encoder)
-#pragma config(Motor,  mtr_S1_C3_1,     motorPulley,   tmotorTetrix, openLoop)
+#pragma config(Motor,  mtr_S1_C3_1,     motorPulley,   tmotorTetrix, openLoop, reversed)
 #pragma config(Motor,  mtr_S1_C3_2,     motorb,        tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S2_C1_1,     motora,        tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S2_C1_2,     motorBrush,    tmotorTetrix, openLoop, reversed)
@@ -183,11 +183,11 @@ task basket()
 	{
 		if(joy2Btn(6) == 1)
 		{
-			servo[servoBasket] = 0;
+			servo[servoBasket] = 65 ;
 		}
-		else if(joy2Btn(7) ==1)
+		else if(joy2Btn(5) ==1)
 		{
-			servo[servoBasket] = 255;
+			servo[servoBasket] = 255 ;
 		}
 		wait1Msec(5);
 	}
@@ -254,5 +254,6 @@ task main()
 	while(true)
 	{
 		getJoystickSettings(joystick);
+		nxtDisplayCenteredTextLine(3, "Sensor Value: %d", servo[servoBasket]);
 	}
 }
