@@ -181,11 +181,11 @@ task basket()
 {
 	while(true)
 	{
-		if(joy2Btn(6) == 1)
+		if(joy2Btn(6) == 1) //Move basket down
 		{
 			servo[servoBasket] = 65 ;
 		}
-		else if(joy2Btn(5) ==1)
+		else if(joy2Btn(5) == 1) //Move basket up
 		{
 			servo[servoBasket] = 255 ;
 		}
@@ -208,6 +208,7 @@ void initializeRobot()
 {
   // Place code here to sinitialize servos to starting positions.
   // Sensors are automatically configured and setup by ROBOTC. They may need a brief time to stabilize.
+	servo[servoBasket] = 255; //Basket servo up
 
   return;
 }
@@ -245,15 +246,16 @@ task main()
   initializeRobot();
 
   waitForStart();   // wait for start of tele-op phase
+
   startTask(baseGrip);
 	//startTask(brushConveyor);
 	startTask(drive);
 	startTask(pulley);
 	startTask(basket);
 	startTask(brushWheels);
+
 	while(true)
 	{
 		getJoystickSettings(joystick);
-		nxtDisplayCenteredTextLine(3, "Sensor Value: %d", servo[servoBasket]);
 	}
 }
