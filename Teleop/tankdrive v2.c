@@ -10,7 +10,7 @@
 #pragma config(Motor,  motorC,           ,             tmotorNXT, openLoop, encoder)
 #pragma config(Motor,  mtr_S1_C2_1,     motorBL,       tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C2_2,     motorBR,       tmotorTetrix, PIDControl, reversed, encoder)
-#pragma config(Motor,  mtr_S1_C3_1,     motorPulleyLeft, tmotorTetrix, openLoop)
+#pragma config(Motor,  mtr_S1_C3_1,     motorPulleyLeft, tmotorTetrix, openLoop, encoder)
 #pragma config(Motor,  mtr_S1_C3_2,     motorPulleyRight, tmotorTetrix, openLoop, reversed, encoder)
 #pragma config(Motor,  mtr_S2_C1_1,     motorTL,       tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S2_C1_2,     motorBrush,    tmotorTetrix, openLoop, reversed)
@@ -40,7 +40,7 @@ CONTROLLER 1
 	* Y button
 	* X button
 	* A button
-	* B button
+	* B button - grippers
 	* Left Analog Y- tankdrive
 	* Right Analog Y- tankdrive
 	* Left Analog X
@@ -55,6 +55,7 @@ CONTROLLER 2
 	* Right Analog Y- pulley
 	* Left Analog X
 	* Right Analog X
+	* Arrow Pad - pulley
 */
 
 #include "JoystickDriver.c"  //Include file to "handle" the Bluetooth messages.
@@ -162,11 +163,14 @@ task pulley() //method for pulley system
 		}
 	}
 
+ 	nMotorEncoder[motorPulleyLeft] = 0;
+	nMotorEncoder[motorPulleyRight] = 0;
+
 	while(true)
 	{
 		if(joystick.joy2_TopHat == 2) //right
 		{
-			while(nMotorEncoder[motorPulleyLeft] < 871 ||	nMotorEncoder[motorPulleyRight] < 871)
+			while(nMotorEncoder[motorPulleyLeft] < 871 )//||	nMotorEncoder[motorPulleyRight] < 871)
 			{
 				motor[motorPulleyLeft] = 60;
 				motor[motorPulleyRight] = 60;
